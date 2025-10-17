@@ -85,10 +85,13 @@ nav ul li a {
     padding: 8px 12px;
     border-radius: 8px;
     position: relative;
+    font-weight: bold; /* Added for consistency with footer links */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Added text-shadow to transition */
 }
 
 nav ul li a:hover {
     color: var(--primary-color);
+    text-shadow: 0 0 8px rgba(106, 165, 255, 0.7); /* Modern glow effect */
 }
 
 .hamburger { display: none; }
@@ -188,7 +191,13 @@ section:last-child {
     box-shadow: 0 20px 40px var(--shadow-color);
     position: relative;
     overflow: hidden;
-    text-align: center;
+    text-align: left; /* Changed to left for code formatting */
+    width: 400px; /* Increased width */
+    height: 150px; /* Increased height */
+    display: flex; /* Use flexbox for content alignment */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Center content vertically */
+    margin-left: auto; /* Align to the right */
 }.code-animation:before {
     content: "";
     position: absolute;
@@ -197,7 +206,7 @@ section:last-child {
     pointer-events: none;
 }
 .code-line { display: flex; gap: 8px; align-items: center; color: #cbd5e1; }
-.code-line.indent { padding-left: 16px; }
+.code-line.indent { padding-left: 32px; } /* Increased indentation */
 .code-keyword { color: #34d399; }
 .code-function { color: #60a5fa; }
 .code-paren { color: #94a3b8; }
@@ -260,7 +269,11 @@ section:last-child {
 .skill-card p { color: var(--muted-text); font-size: 0.95rem; line-height: 1.4; word-break: break-word; overflow-wrap: anywhere; margin: 0; }
 
 .projects-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-.project-card { padding: 20px; border: 1px solid var(--glass-border); border-radius: 16px; background: var(--card-bg-color); box-shadow: 0 20px 40px var(--shadow-color); position: relative; overflow: hidden; }
+.project-card { padding: 20px; border: 1px solid var(--glass-border); border-radius: 16px; background: var(--card-bg-color);
+    box-shadow: 0 20px 40px var(--shadow-color);
+    position: relative;
+    overflow: hidden;
+}
 .project-card.animated-border:before { content: ""; position: absolute; inset: -2px; background: conic-gradient(from 180deg at 50% 50%, rgba(106,165,255,0.2), rgba(167,139,250,0.2), rgba(99,102,241,0.2), rgba(56,189,248,0.2), rgba(106,165,255,0.2)); filter: blur(10px); z-index: -1; }
 
 .portfolio-item img {
@@ -403,4 +416,25 @@ footer {
     .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .projects-grid { grid-template-columns: 1fr; }
     .contact-links { grid-template-columns: 1fr; }
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--border-color);
+    color: var(--muted-text);
+}
+
+.footer-links a {
+    color: #ccc; /* Modern light gray link color */
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Added text-shadow to transition */
+}
+
+.footer-links a:hover {
+    color: var(--primary-color); /* Using primary color for hover */
+    text-shadow: 0 0 8px rgba(106, 165, 255, 0.7); /* Modern glow effect */
 }

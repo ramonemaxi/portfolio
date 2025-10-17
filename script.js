@@ -73,3 +73,80 @@ projectTabs.forEach(btn => {
 setProjectsCategory('en-curso');
 
 
+// Typing effect for hero section with structured HTML
+const codeAnimationContainer = document.querySelector('.code-animation');
+
+if (codeAnimationContainer) {
+    const originalContent = codeAnimationContainer.innerHTML;
+    codeAnimationContainer.innerHTML = ''; // Clear content initially
+
+    const lines = [
+        { text: 'def ', class: 'code-keyword' },
+        { text: 'crear_solucion', class: 'code-function' },
+        { text: '():', class: 'code-paren' }, // Added colon here
+        { text: '\n' }, // Line break for the first line
+        { text: 'return ', class: 'code-keyword', indent: true }, // Removed explicit spaces, indentation controlled by CSS
+        { text: '"innovación"', class: 'code-string' }
+    ];
+
+    let lineIndex = 0;
+    let charIndex = 0;
+    let currentLineElement = null;
+    let currentSpanElement = null;
+
+    function typeEffect() {
+        if (lineIndex < lines.length) {
+            const lineData = lines[lineIndex];
+
+            if (lineData.text === '\n') {
+                // Handle line break
+                const newLineDiv = document.createElement('div');
+                newLineDiv.classList.add('code-line');
+                if (lines[lineIndex + 1] && lines[lineIndex + 1].indent) {
+                    newLineDiv.classList.add('indent');
+                }
+                codeAnimationContainer.appendChild(newLineDiv);
+                currentLineElement = newLineDiv;
+                currentSpanElement = null; // Reset current span
+                lineIndex++;
+                charIndex = 0;
+                setTimeout(typeEffect, 50); // Short delay for new line
+                return;
+            }
+
+            if (!currentLineElement) {
+                currentLineElement = document.createElement('div');
+                currentLineElement.classList.add('code-line');
+                if (lineData.indent) {
+                    currentLineElement.classList.add('indent');
+                }
+                codeAnimationContainer.appendChild(currentLineElement);
+            }
+
+            if (!currentSpanElement || currentSpanElement.className !== lineData.class) {
+                currentSpanElement = document.createElement('span');
+                if (lineData.class) {
+                    currentSpanElement.classList.add(lineData.class);
+                }
+                currentLineElement.appendChild(currentSpanElement);
+            }
+
+            if (charIndex < lineData.text.length) {
+                currentSpanElement.textContent += lineData.text.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeEffect, 70); // Typing speed
+            } else {
+                lineIndex++;
+                charIndex = 0;
+                currentSpanElement = null; // Reset current span for the next part of the line
+                setTimeout(typeEffect, 50); // Short delay before next part
+            }
+        } else {
+            // Typing complete, optionally reset or loop
+            // For now, just stop.
+        }
+    }
+
+    // Start the typing effect after a short delay
+    setTimeout(typeEffect, 1000);
+}
