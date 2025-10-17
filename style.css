@@ -179,7 +179,7 @@ section:last-child {
 .cta.secondary:hover { border-color: var(--primary-color); color: var(--primary-color); }
 
 .hero-visual { position: relative; }
-.code-animation { 
+.code-animation {
     font-family: 'JetBrains Mono', monospace;
     background: var(--card-bg-color);
     border: 1px solid var(--glass-border);
@@ -188,8 +188,8 @@ section:last-child {
     box-shadow: 0 20px 40px var(--shadow-color);
     position: relative;
     overflow: hidden;
-}
-.code-animation:before {
+    text-align: center;
+}.code-animation:before {
     content: "";
     position: absolute;
     inset: 0;
