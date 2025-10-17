@@ -3,68 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio de Maximiliano Benegas</title>
+    <meta name="description" content="Portfolio de Maximiliano Benegas - Desarrollador Python especializado en Django, FastAPI y automatización">
+    <meta name="keywords" content="desarrollador python, django, fastapi, web scraping, portfolio">
+    <title>Maximiliano Benegas - Desarrollador Python</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
-        <nav>
-            <h1>Maximiliano Benegas</h1>
-            <ul>
-                <li><a href="#sobre-mi">Sobre mí</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>ElMaXoR</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
+                <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
             </ul>
+            <div class="hamburger" aria-label="Abrir menú" aria-expanded="false" role="button" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
     </header>
 
     <main>
-        <section id="hero">
-            <h2>Desarrollador Python</h2>
-            <p>Apasionado por la creación de soluciones eficientes y escalables.</p>
-            <a href="#contacto" class="cta">Hablemos</a>
-        </section>
-
-        <section id="sobre-mi">
-            <h3>Sobre mí</h3>
-            <p>Soy un desarrollador Python con experiencia en desarrollo backend con Django y FastAPI, automatización de tareas, web scraping y desarrollo de aplicaciones a medida. Me encanta aprender nuevas tecnologías y aplicarlas para resolver problemas complejos. Mi objetivo es seguir creciendo como profesional y aportar valor en proyectos desafiantes.</p>
-        </section>
-
-        <section id="proyectos">
-            <h3>Proyectos</h3>
-            <div class="proyecto">
-                <p>Un sistema integral para una feria americana, diseñado para gestionar ventas, controlar el stock, realizar análisis de datos y administrar la base de clientes de manera eficiente.</p>
-                <div class="enlaces-proyecto">
-                    <a href="#" target="_blank">Ver Demo</a>
-                    <a href="#" target="_blank">Ver Código</a>
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2 class="hero-title">
+                        <span class="greeting">¡Hola! Soy</span>
+                        <span class="name-highlight">Maximiliano Benegas</span>
+                    </h2>
+                    <p class="hero-subtitle">Desarrollador Python apasionado por crear soluciones eficientes y escalables</p>
+                    <div class="hero-buttons">
+                        <a href="#contacto" class="cta primary">Hablemos</a>
+                        <a href="#proyectos" class="cta secondary">Ver Proyectos</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="code-animation">
+                        <div class="code-line">
+                            <span class="code-keyword">def</span> 
+                            <span class="code-function">crear_solucion</span>
+                            <span class="code-paren">()</span>
+                        </div>
+                        <div class="code-line indent">
+                            <span class="code-keyword">return</span> 
+                            <span class="code-string">"innovación"</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="proyecto">
-                <h4>Scraper de Superintendencia de Salud</h4>
-                <p>Un script de web scraping diseñado para extraer datos relevantes de la página de la Superintendencia de Salud, facilitando la recolección y análisis de información.</p>
-                <div class="enlaces-proyecto">
-                    <a href="#" target="_blank">Ver Demo</a>
-                    <a href="#" target="_blank">Ver Código</a>
+        </section>
+
+        <section id="sobre-mi" class="about-section">
+            <div class="section-header">
+                <h3 class="section-title">Sobre mí</h3>
+                <div class="section-divider"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <img src="perfil_01.jpg" alt="Maximiliano Benegas" class="profile-picture">
+                    <p>Soy un desarrollador Python con experiencia en desarrollo backend con Django y FastAPI, automatización de tareas, web scraping y desarrollo de aplicaciones a medida. Me encanta aprender nuevas tecnologías y aplicarlas para resolver problemas complejos.</p>
+                    <p>Mi objetivo es seguir creciendo como profesional y aportar valor en proyectos desafiantes.</p>
+                </div>
+                <div class="skills-grid">
+                <div class="skill-card hover-lift glass-card">
+                    <i class="fab fa-python"></i>
+                    <h4>Python</h4>
+                    <p>Desarrollo backend y automatización</p>
+                </div>
+                <div class="skill-card hover-lift glass-card">
+                    <i class="fas fa-server"></i>
+                    <h4>Backend</h4>
+                    <p>Django, FastAPI, APIs REST</p>
+                </div>
+                <div class="skill-card hover-lift glass-card">
+                    <i class="fas fa-robot"></i>
+                    <h4>Automatización</h4>
+                    <p>Scripts y procesos automatizados</p>
+                </div>
+                <div class="skill-card hover-lift glass-card">
+                    <i class="fas fa-spider"></i>
+                    <h4>Web Scraping</h4>
+                    <p>Extracción y análisis de datos</p>
+                </div>
                 </div>
             </div>
         </section>
 
-        <section id="contacto">
-            <h3>Contacto</h3>
-            <p>¿Interesado en colaborar? Contáctame.</p>
-            <ul>
-                <li><a href="mailto:ramone.maxi@gmail.com">ramone.maxi@gmail.com</a></li>
-                <li><a href="https://www.linkedin.com/in/maximilianobenegas/" target="_blank">LinkedIn</a></li>
-                <li><a href="https://github.com/themaxor" target="_blank">GitHub</a></li>
-            </ul>
+        <section id="proyectos" class="projects-section">
+            <div class="section-header">
+                <h3 class="section-title">Proyectos</h3>
+                <div class="section-divider"></div>
+            </div>
+            <div class="projects-controls" role="tablist" aria-label="Categorías de proyectos">
+                <button class="projects-tab is-active" role="tab" aria-selected="true" data-filter="en-curso">En curso</button>
+                <button class="projects-tab" role="tab" aria-selected="false" data-filter="lanzados">Lanzados</button>
+                <span class="projects-tab-indicator"></span>
+            </div>
+            <div class="projects-grid" data-projects-grid>
+                <div class="project-card hover-lift glass-card animated-border" data-category="en-curso">
+                    <div class="project-header">
+                        <h4 class="project-title">TaskAI - Sistema de Gestión de Tareas Inteligente</h4>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">SQLAlchemy</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                        </div>
+                    </div>
+                    <p class="project-description">Gestor de tareas con IA que aprende tus patrones de productividad y sugiere horarios óptimos, implementado con principios SOLID y API REST.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/ramonemaxi/TaskAI" target="_blank" class="project-link" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                            Ver Código
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card hover-lift glass-card animated-border" data-category="lanzados" hidden>
+                    <div class="project-header">
+                        <h4 class="project-title">PROYECTO DE SCRAPING (SCRAP)</h4>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Selenium</span>
+                            <span class="tech-tag">SQLite</span>
+                        </div>
+                    </div>
+                    <p class="project-description">Este proyecto es un web scraper diseñado para extraer información de un sitio web gubernamental argentino. Utiliza Selenium para la automatización del navegador y SQLite para el almacenamiento de datos.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/ramonemaxi/SCRAP" target="_blank" class="project-link" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                            Ver Código
+                        </a>
+                    </div>
+                </div>
+                <div class="projects-empty" data-empty="lanzados" hidden>
+                    <p class="muted">Aún no hay proyectos lanzados aquí. Pronto se vienen novedades.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact-section">
+            <div class="section-header">
+                <h3 class="section-title">Contacto</h3>
+                <div class="section-divider"></div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-text">
+                    <p class="contact-subtitle">¿Interesado en colaborar? Contáctame.</p>
+                    <p class="contact-description">Estoy siempre abierto a nuevas oportunidades y proyectos interesantes. ¡Hablemos!</p>
+                </div>
+                <div class="contact-links">
+                    <a href="mailto:ramone.maxi@gmail.com" class="contact-link hover-lift glass-card">
+                        <i class="fas fa-envelope"></i>
+                        <span>ramone.maxi@gmail.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/maximilianobenegas/" target="_blank" class="contact-link hover-lift glass-card">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/themaxor" target="_blank" class="contact-link hover-lift glass-card">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Maximiliano Benegas. Todos los derechos reservados.</p>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Maximiliano Benegas. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="#sobre-mi">Sobre mí</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
