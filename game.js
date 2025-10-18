@@ -101,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const currentInputLine = terminalInput.parentNode;
                 terminalBody.innerHTML = '';
                 terminalBody.appendChild(currentInputLine);
+                addLineToTerminal('Escribe \'ayuda\' para ver los comandos disponibles.');
             } else if (command === 'salir') {
                 responses.salir();
             }
@@ -160,4 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     terminalInput.focus();
+
+    // Initial welcome message
+    addLineToTerminal('Escribe \'ayuda\' para ver los comandos disponibles.');
 });
