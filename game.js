@@ -161,7 +161,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     terminalInput.focus();
-
-    // Initial welcome message
-    addLineToTerminal('Escribe \'ayuda\' para ver los comandos disponibles.');
 });
