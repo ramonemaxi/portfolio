@@ -101,7 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const currentInputLine = terminalInput.parentNode;
                 terminalBody.innerHTML = '';
                 terminalBody.appendChild(currentInputLine);
-                addLineToTerminal('Escribe \'ayuda\' para ver los comandos disponibles.');
             } else if (command === 'salir') {
                 responses.salir();
             }
