@@ -101,11 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const currentInputLine = terminalInput.parentNode;
                 terminalBody.innerHTML = '';
                 terminalBody.appendChild(currentInputLine);
-                addLineToTerminal('Bienvenido a la terminal interactiva de Maxi.');
                 addLineToTerminal('Escribe \'ayuda\' para ver los comandos disponibles.');
             } else if (command === 'salir') {
                 responses.salir();
-            } else if (command === 'list-projects') {
+            }
+            else if (command === 'list-projects') {
                 addLineToTerminal(responses['list-projects']());
             } else if (command === 'inspect') {
                 if (arg && projectsData[arg]) {
