@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Game - Conoce a Maxi</title>
+    <link rel="stylesheet" href="game.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="terminal-buttons">
+                <span class="terminal-button close" onclick="window.location.href='index.html'"></span>
+                <span class="terminal-button minimize" id="minimize-button"></span>
+                <span class="terminal-button maximize" id="maximize-button"></span>
+            </div>
+            <div class="terminal-title">maxi@portfolio:~$</div>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+            <div class="terminal-output">Bienvenido a la terminal interactiva de Maxi.</div>
+            <div class="terminal-output">Escribe 'ayuda' para ver los comandos disponibles.</div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">maxi@portfolio:~$</span>
+                <input type="text" class="terminal-input" id="terminal-input" autofocus>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>

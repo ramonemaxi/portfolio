@@ -1,0 +1,167 @@
+:root {
+    --bg-color: #0b0f14;
+    --text-color: #e9eef5;
+    --muted-text: #a0a8b6;
+    --primary-color: #6aa5ff;
+    --primary-700: #3d7eff;
+    --accent-color: #a78bfa;
+    --card-bg-color: rgba(21, 27, 36, 0.6);
+    --elevated-bg: rgba(21, 27, 36, 0.85);
+    --border-color: rgba(148, 163, 184, 0.14);
+    --glass-border: rgba(148, 163, 184, 0.22);
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --success: #22c55e;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Keep this for horizontal centering */
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Prevent body overflow */
+    background-image: radial-gradient(1000px 600px at 10% -10%, rgba(99, 102, 241, 0.15), transparent 60%),
+                      radial-gradient(800px 500px at 100% 10%, rgba(59, 130, 246, 0.12), transparent 60%),
+                      radial-gradient(600px 600px at 50% 120%, rgba(16, 185, 129, 0.08), transparent 60%);
+}
+
+.terminal-container {
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh; /* Use max-height to ensure it fits within viewport */
+    height: 600px; /* Keep a default height, but max-height will limit it */
+    background-color: var(--card-bg-color);
+    border-radius: 16px; /* More stylized border-radius */
+    box-shadow: 0 20px 40px var(--shadow-color);
+    border: 1px solid var(--glass-border); /* Stylized border */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative; /* For potential animations/transitions */
+    transition: all 0.3s ease; /* Smooth transitions for minimize/maximize */
+    margin: auto; /* This will center it vertically and horizontally within the flex container */
+}
+
+.terminal-container.minimized {
+    width: 300px;
+    height: 40px;
+    max-height: 40px;
+    overflow: hidden;
+    align-self: flex-end; /* Position at bottom right when minimized */
+    margin: 20px; /* Some margin from the corner */
+}
+
+.terminal-header {
+    background-color: var(--elevated-bg);
+    padding: 10px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--muted-text);
+    font-size: 0.9em;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.terminal-container.minimized .terminal-header {
+    border-bottom: none;
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.terminal-button.close {
+    background-color: var(--danger);
+}
+
+.terminal-button.minimize {
+    background-color: var(--warning);
+}
+
+.terminal-button.maximize {
+    background-color: var(--success);
+}
+
+.terminal-title {
+    flex-grow: 1;
+    text-align: center;
+    user-select: none;
+}
+
+.terminal-body {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: var(--text-color); /* Changed to text-color for better contrast */
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.terminal-container.minimized .terminal-body {
+    display: none; /* Hide body when minimized */
+}
+
+.terminal-output {
+    margin-bottom: 5px;
+    color: var(--muted-text); /* Output text color */
+}
+
+.terminal-line {
+    display: flex;
+    align-items: baseline;
+}
+
+.terminal-prompt {
+    color: var(--primary-color);
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.terminal-input {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    flex-grow: 1;
+    outline: none;
+    caret-color: var(--primary-color);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+    padding: 0;
+}
+
+/* Scrollbar styling */
+.terminal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+    background: var(--card-bg-color);
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 4px;
+    border: 2px solid var(--card-bg-color);
+}
+
+.terminal-body::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-700);
+}
