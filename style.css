@@ -601,3 +601,31 @@ footer {
     transform: scale(1.05);
 }
 
+/*--------------------------------------------------------------
+# Tech Logos Section
+--------------------------------------------------------------*/
+.tech-section {
+    padding: 4rem 20px;
+}
+
+.tech-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.tech-logos img {
+    height: 40px;
+    width: auto;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.tech-logos img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
