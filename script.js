@@ -150,3 +150,148 @@ if (codeAnimationContainer) {
     // Start the typing effect after a short delay
     setTimeout(typeEffect, 1000);
 }
+// Certificates Carousel & Lightbox
+document.addEventListener("DOMContentLoaded", () => {
+    const carousel = document.querySelector(".certificates-carousel");
+    const prevButton = document.querySelector(".carousel-arrow.prev");
+    const nextButton = document.querySelector(".carousel-arrow.next");
+    const carouselWrapper = document.querySelector(".certificates-carousel-wrapper");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const lightboxClose = document.querySelector(".lightbox-close");
+
+    if (!carousel || !prevButton || !nextButton || !carouselWrapper || !lightbox || !lightboxImg || !lightboxClose) {
+        console.error("Faltan algunos elementos del carrusel o del lightbox.");
+        return;
+    }
+
+    const openLightbox = (src) => {
+        lightboxImg.src = src;
+        lightbox.classList.add("active");
+    };
+
+    const closeLightbox = () => {
+        lightbox.classList.remove("active");
+    };
+
+    lightboxClose.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    const setupCarousel = (certificates) => {
+        if (!Array.isArray(certificates) || certificates.length === 0) {
+            console.error("No se encontraron certificados o el formato es incorrecto.");
+            return;
+        }
+
+        certificates.forEach(certFile => {
+            const card = document.createElement("div");
+            card.className = "certificate-card glass-card hover-lift";
+
+            const img = document.createElement("img");
+            img.src = `cerificados/${certFile}`;
+            img.alt = certFile.replace(/\.(png|jpg)$/, "").replace(/-/g, " ");
+
+            img.addEventListener("click", () => {
+                openLightbox(img.src);
+            });
+            
+            card.appendChild(img);
+            carousel.appendChild(card);
+        });
+    };
+
+    fetch('cerificados/certificates.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(certificates => {
+            setupCarousel(certificates);
+        })
+        .catch(error => {
+            console.error('Error al cargar o procesar el archivo de certificados:', error);
+            carousel.innerHTML = '<p style="color: var(--danger);">Error al cargar los certificados.</p>';
+        });
+
+    // Carousel scroll functionality
+    const scrollAmount = 320; // Width of a card + margin
+    let autoScrollInterval;
+    let isScrolling = false;
+
+    function smoothScrollTo(element, to, duration) {
+        isScrolling = true;
+        const start = element.scrollLeft;
+        const change = to - start;
+        const startTime = performance.now();
+
+        const easeInOutQuad = (t, b, c, d) => {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t + b;
+            t--;
+            return -c / 2 * (t * (t - 2) - 1) + b;
+        };
+
+        function animateScroll() {
+            const currentTime = performance.now();
+            const elapsed = currentTime - startTime;
+            element.scrollLeft = easeInOutQuad(elapsed, start, change, duration);
+
+            if (elapsed < duration) {
+                requestAnimationFrame(animateScroll);
+            } else {
+                element.scrollLeft = to;
+                isScrolling = false;
+            }
+        }
+        animateScroll();
+    }
+
+    const scrollCarousel = (direction) => {
+        if (isScrolling) return;
+        const currentScroll = carousel.scrollLeft;
+        const targetScroll = currentScroll + direction * scrollAmount;
+        smoothScrollTo(carousel, targetScroll, 800); // 800ms duration
+    };
+
+    prevButton.addEventListener("click", () => {
+        scrollCarousel(-1);
+        stopAutoScroll();
+        // Optional: restart autoplay after a delay
+        setTimeout(startAutoScroll, 5000);
+    });
+
+    nextButton.addEventListener("click", () => {
+        scrollCarousel(1);
+        stopAutoScroll();
+        // Optional: restart autoplay after a delay
+        setTimeout(startAutoScroll, 5000);
+    });
+
+    const startAutoScroll = () => {
+        stopAutoScroll(); // Ensure no multiple intervals are running
+        autoScrollInterval = setInterval(() => {
+            if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 1) {
+                // If at the end, scroll to the beginning
+                smoothScrollTo(carousel, 0, 1200);
+            } else {
+                scrollCarousel(1);
+            }
+        }, 3000);
+    };
+
+    const stopAutoScroll = () => {
+        clearInterval(autoScrollInterval);
+    };
+
+    carouselWrapper.addEventListener("mouseenter", stopAutoScroll);
+    carouselWrapper.addEventListener("mouseleave", startAutoScroll);
+
+    startAutoScroll();
+});
+
